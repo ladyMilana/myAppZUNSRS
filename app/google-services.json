@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "369607891071",
+    "project_id": "appzunsrs",
+    "storage_bucket": "appzunsrs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369607891071:android:6b68bb8c81925345e1074a",
+        "android_client_info": {
+          "package_name": "com.example.appzunsrs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369607891071-mqflncdhe9lne1amvp9uusb9n12qea60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx77YheyRJYmajwB7x0-6X-anYHtO4x-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369607891071-mqflncdhe9lne1amvp9uusb9n12qea60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

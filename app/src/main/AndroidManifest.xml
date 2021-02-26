@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.appzunsrs">
+
+    <uses-permission android:name="android.permission.CAMERA " />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="ZUNSRS"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppZUNSRS">
+        <activity android:name=".WebPrikazActivity"></activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+
+        <activity
+            android:name=".Pop"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".KontaktiActivity" />
+        <activity android:name=".SviUdzbActivity" />
+        <activity android:name=".DrugiActivity" />
+        <activity android:name=".PrviActivity" />
+        <activity android:name=".DevetiActivity" />
+        <activity android:name=".OsmiActivity" />
+        <activity android:name=".SedmiActivity" />
+        <activity android:name=".SestiActivity" />
+        <activity android:name=".PetiActivity" />
+        <activity android:name=".CetvrtiActivity" />
+        <activity android:name=".TreciActivity" />
+        <activity android:name=".HomePageActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Capture"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme" />
+    </application>
+
+</manifest>
