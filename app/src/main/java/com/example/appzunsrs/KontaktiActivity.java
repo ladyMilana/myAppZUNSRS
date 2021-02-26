@@ -1,17 +1,22 @@
 package com.example.appzunsrs;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +28,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +54,7 @@ public class KontaktiActivity extends AppCompatActivity {
     ListView listView;
     List<Radnje> listaRadnji;
 
+    LocationManager locationManager;
     //MOJA LOKACIJA
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -51,6 +63,7 @@ public class KontaktiActivity extends AppCompatActivity {
     float distanca;
     Radnje najblizaRadnja;
     float minDist;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +117,19 @@ public class KontaktiActivity extends AppCompatActivity {
 
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    void getLocation() {
+        try {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, (LocationListener) this);
+        }
+        catch(SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private void fetchLastLocation() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -115,6 +141,7 @@ public class KontaktiActivity extends AppCompatActivity {
 
         Log.i("FETCH1", "FETCH1");
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
+
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {

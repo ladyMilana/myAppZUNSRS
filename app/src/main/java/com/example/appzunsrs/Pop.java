@@ -1,18 +1,22 @@
 package com.example.appzunsrs;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,33 +46,34 @@ public class Pop extends FragmentActivity implements OnMapReadyCallback {
         setContentView(R.layout.popupwindow);
 
         //dohvati adresu
-        adr=getIntent().getStringExtra("ADR");
-        naziv=getIntent().getStringExtra("NAZIV");
-        tel=getIntent().getStringExtra("TEL");
+        adr = getIntent().getStringExtra("ADR");
+        naziv = getIntent().getStringExtra("NAZIV");
+        tel = getIntent().getStringExtra("TEL");
 
 
-        TextView naz=(TextView)findViewById(R.id.idNazivKnjizare);
-        FloatingActionButton buttonCall=(FloatingActionButton) findViewById(R.id.floatingActionButton);
+        TextView naz = (TextView) findViewById(R.id.idNazivKnjizare);
+        FloatingActionButton buttonCall = (FloatingActionButton) findViewById(R.id.floatingActionButton);
 
         naz.setText(naziv);
 
-        DisplayMetrics dm=new DisplayMetrics();
+        DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        int width=dm.widthPixels;
-        int height=dm.heightPixels;
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.8),(int)(height*0.8));
+        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.8));
 
-        loc=getLocationFromAddress(adr);
+        loc = getLocationFromAddress(adr);
 
-        SupportMapFragment supportMapFragment= (SupportMapFragment)
+        SupportMapFragment supportMapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.google_map);
-                supportMapFragment.getMapAsync(Pop.this);
+        supportMapFragment.getMapAsync(Pop.this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
 
         LatLng latLng=new LatLng(loc.getLatitude(), loc.getLongitude());
         MarkerOptions markerOptions=new MarkerOptions().position(latLng).title(adr);
