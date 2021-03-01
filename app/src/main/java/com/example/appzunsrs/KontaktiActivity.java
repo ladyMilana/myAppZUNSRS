@@ -54,7 +54,7 @@ public class KontaktiActivity extends AppCompatActivity {
     ListView listView;
     List<Radnje> listaRadnji;
 
-    LocationManager locationManager;
+
     //MOJA LOKACIJA
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -117,17 +117,6 @@ public class KontaktiActivity extends AppCompatActivity {
 
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    void getLocation() {
-        try {
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, (LocationListener) this);
-        }
-        catch(SecurityException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     private void fetchLastLocation() {

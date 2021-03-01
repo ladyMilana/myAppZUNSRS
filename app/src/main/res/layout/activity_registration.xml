@@ -4,7 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0F2F1"
     tools:context=".RegistrationActivity">
+
+    <EditText
+        android:id="@+id/idMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Е-маил"
+        android:inputType="text|textEmailAddress"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idKorIme"
+        app:layout_constraintVertical_bias="0.046" />
 
     <EditText
         android:id="@+id/idIme"
@@ -13,11 +30,14 @@
         android:ems="10"
         android:hint="Име"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <EditText
         android:id="@+id/idPrezime"
@@ -26,6 +46,8 @@
         android:ems="10"
         android:hint="Презиме"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -40,6 +62,8 @@
         android:ems="10"
         android:hint="ЈМБГ"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -54,25 +78,31 @@
         android:ems="10"
         android:hint="Корисничко име"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idJmbg"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <EditText
         android:id="@+id/idLozinka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
         android:ems="10"
         android:hint="Лозинка"
         android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idKorIme"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintTop_toBottomOf="@+id/idMail"
+        app:layout_constraintVertical_bias="0.135" />
 
     <EditText
         android:id="@+id/idPLozinka"
@@ -81,21 +111,38 @@
         android:ems="10"
         android:hint="Потврди лозинку"
         android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idLozinka"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.091" />
 
     <Button
         android:id="@+id/btnRegSe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="172dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="registracija"
         android:text="РЕГИСТРУЈ СЕ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idPLozinka" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="209dp"
+        android:layout_height="46dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idPLozinka"
+        app:layout_constraintVertical_bias="0.147" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

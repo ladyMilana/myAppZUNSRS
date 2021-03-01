@@ -62,7 +62,7 @@ public class Pop extends FragmentActivity implements OnMapReadyCallback {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.8));
+        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.8));
 
         loc = getLocationFromAddress(adr);
 
@@ -74,11 +74,10 @@ public class Pop extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-
         LatLng latLng=new LatLng(loc.getLatitude(), loc.getLongitude());
         MarkerOptions markerOptions=new MarkerOptions().position(latLng).title(adr);
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,5));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,12));
         googleMap.addMarker(markerOptions);
     }
 

@@ -10,20 +10,21 @@
         android:id="@+id/storeInfo3"
         android:layout_width="104dp"
         android:layout_height="70dp"
+        android:textAlignment="textStart"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/storeInfo2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/storeInfo2"
         android:layout_width="104dp"
         android:layout_height="70dp"
-        android:layout_marginStart="9dp"
+        android:textAlignment="textStart"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/storeInfo3"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/storeInfo1"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,10 +32,13 @@
         android:id="@+id/storeInfo1"
         android:layout_width="135dp"
         android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:textAlignment="textStart"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

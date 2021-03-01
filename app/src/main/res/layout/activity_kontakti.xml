@@ -1,67 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EFE4F1">
 
 
     <ListView
         android:id="@+id/idListView"
-        android:layout_width="350dp"
-        android:layout_height="328dp"
+        android:layout_width="344dp"
+        android:layout_height="538dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="67dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="66dp"
+        android:background="#E1C4E6"
+        android:fitsSystemWindows="false"
+        android:focusable="auto"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="135dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="22dp"
+        android:layout_width="119dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
         android:text="НАЗИВ"
+        android:textAlignment="viewStart"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/idListView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
+        app:layout_constraintVertical_bias="0.936" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="104dp"
-        android:layout_height="35dp"
+        android:layout_width="115dp"
+        android:layout_height="23dp"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:text="АДРЕСА"
+        android:textAlignment="viewStart"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/idListView"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="104dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="22dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:text="ТЕЛЕФОН"
+        android:textAlignment="viewStart"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/idListView"

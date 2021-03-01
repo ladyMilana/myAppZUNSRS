@@ -4,36 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0F2F1"
     tools:context=".HomePageActivity">
 
 
     <Button
         android:id="@+id/button"
-        android:layout_width="162dp"
-        android:layout_height="55dp"
+        android:layout_width="207dp"
+        android:layout_height="195dp"
+        android:backgroundTint="@color/teal_200"
         android:onClick="goToMojiU"
         android:text="Моји уџбеници"
+        android:textColor="@color/purple_700"
         android:textSize="10sp"
+        app:iconTint="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.251" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="162dp"
-        android:layout_height="55dp"
+        android:layout_width="182dp"
+        android:layout_height="73dp"
+        android:background="@color/teal_700"
+        android:backgroundTint="@color/teal_700"
         android:onClick="goToSviU"
         android:text="Сви уџбеници"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.993"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
         android:id="@+id/btnScan"

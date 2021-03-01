@@ -4,18 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D298ECE5"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/idWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text='ЈП "ЗАВОД ЗА УЏБЕНИКЕ И НАСТАВНА СРЕДСТВА"'
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.998" />
 
     <Button
         android:id="@+id/btnReg"
@@ -23,33 +13,46 @@
         android:layout_height="wrap_content"
         android:onClick="registration"
         android:text="РЕГИСТРАЦИЈА"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
+        app:layout_constraintVertical_bias="0.834" />
 
     <Button
         android:id="@+id/btnPrijava"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="141dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="32dp"
+        android:background="#E0F7FA"
+        android:backgroundTint="#D6F2F6"
         android:onClick="login"
         android:text="ПРИЈАВА"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/btnReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_width="218dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="128dp"
+        android:background="#E0F7FA"
         android:ems="10"
         android:hint="Корисничко име"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textColorHint="@color/purple_200"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,13 +60,34 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="40dp"
         android:layout_marginTop="40dp"
+        android:background="#E0F7FA"
         android:ems="10"
         android:hint="Лозинка"
         android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textColorHint="@color/purple_200"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="443dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReg"
+        app:layout_constraintVertical_bias="0.333"
+        app:srcCompat="@drawable/zavod_za_udzbenike" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

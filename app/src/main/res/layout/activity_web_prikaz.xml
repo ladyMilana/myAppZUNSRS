@@ -5,12 +5,13 @@
     android:id="@+id/webView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#979AF3E8"
     tools:context=".WebPrikazActivity">
 
     <WebView
         android:id="@+id/idWeb"
-        android:layout_width="282dp"
-        android:layout_height="476dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
