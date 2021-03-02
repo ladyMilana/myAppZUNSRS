@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference reff;
     EditText korIme;
     EditText lozinka;
+    TextView poruka;
 
-
+    boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,31 @@ public class MainActivity extends AppCompatActivity {
 
         korIme=(EditText)findViewById(R.id.username);
         lozinka=(EditText)findViewById(R.id.password);
+        poruka=(TextView)findViewById(R.id.poruka);
 
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        poruka.setText("");
+
+    }
+
     public void login(View view){
+
+        poruka.setText("");
+
+        if(TextUtils.isEmpty(korIme.getText())){
+            korIme.setError("Корисничко име је обавезно!");
+            return;
+        }
+
+        if(TextUtils.isEmpty(lozinka.getText())){
+            lozinka.setError("Лозинка је обавезна!");
+            return;
+        }
 
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,22 +75,20 @@ public class MainActivity extends AppCompatActivity {
                     ucenik = ds.getValue(Ucenik.class);
 
                     if((ucenik.getKorisnickoIme().equals(korIme.getText().toString())) && (ucenik.getLozinka().equals(lozinka.getText().toString()))){
+
                         Intent intent=new Intent(MainActivity.this, HomePageActivity.class);
                         intent.putExtra("RAZRED", ucenik.getRazred());
                         startActivity(intent);
-                        korIme.setText("");
-                        lozinka.setText("");
-                        Log.d("DOHVATI", "Ученик усјешно дохваћен!" + ucenik.getKorisnickoIme());
+                        poruka.setText("");
+                        return;
                     }
-
-
-                        korIme.setError("Покушајте поново!");
-                        lozinka.setError("Неисправна комбинација");
-
                 }
 
-
-
+                if(TextUtils.isEmpty(korIme.getText()) && TextUtils.isEmpty(lozinka.getText())){
+                    poruka.setText("");
+                }else {
+                    poruka.setText("Неисправна комбинација корисничког имена и лозинке!");
+                }
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -76,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("GRESKA", "Неуспјешно читање из базе!", error.toException());
             }
         });
+
+
+
 
 
 

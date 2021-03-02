@@ -13,7 +13,7 @@ public class TreciActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treci);
-        setTitle("ДОБРОДОШЛИ У ТРЕЋИ РАЗРЕД");
+        setTitle("ТРЕЋИ РАЗРЕД");
     }
 
     public void goToSrpskiJ3(View view){

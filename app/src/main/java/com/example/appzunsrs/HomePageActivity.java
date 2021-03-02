@@ -18,12 +18,15 @@ import com.google.zxing.integration.android.IntentResult;
 public class HomePageActivity extends AppCompatActivity {
 
     Button btScan;
+    String razred;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         setTitle("ПОЧЕТНИ ЕКРАН - ЗУНСРС");
+
+        razred=getIntent().getStringExtra("RAZRED");
 
         btScan=findViewById(R.id.btnScan);
         btScan.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +67,40 @@ public class HomePageActivity extends AppCompatActivity {
 
     public void goToMojiU(View view){
 
-        Intent intent=new Intent(HomePageActivity.this, SestiActivity.class);
+        Intent intent=new Intent();
+
+        switch(razred){
+
+            case "ПРВИ":
+                intent=new Intent(HomePageActivity.this, PrviActivity.class);
+                break;
+            case "ДРУГИ":
+                intent=new Intent(HomePageActivity.this, DrugiActivity.class);
+                break;
+            case "ТРЕЋИ":
+                intent=new Intent(HomePageActivity.this, TreciActivity.class);
+                break;
+            case "ЧЕТВРТИ":
+                intent=new Intent(HomePageActivity.this, CetvrtiActivity.class);
+                break;
+            case "ПЕТИ":
+                intent=new Intent(HomePageActivity.this, PetiActivity.class);
+                break;
+            case "ШЕСТИ":
+                intent=new Intent(HomePageActivity.this, SestiActivity.class);
+                break;
+            case "СЕДМИ":
+                intent=new Intent(HomePageActivity.this, SedmiActivity.class);
+                break;
+            case "ОСМИ":
+                intent=new Intent(HomePageActivity.this, OsmiActivity.class);
+                break;
+            case "ДЕВЕТИ":
+                intent=new Intent(HomePageActivity.this, DevetiActivity.class);
+                break;
+            default: break;
+        }
+
         startActivity(intent);
     }
 

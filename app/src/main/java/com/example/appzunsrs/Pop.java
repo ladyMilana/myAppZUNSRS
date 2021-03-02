@@ -64,6 +64,7 @@ public class Pop extends FragmentActivity implements OnMapReadyCallback {
 
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.8));
 
+        loc=new Location("");
         loc = getLocationFromAddress(adr);
 
         SupportMapFragment supportMapFragment = (SupportMapFragment)
@@ -106,4 +107,6 @@ public class Pop extends FragmentActivity implements OnMapReadyCallback {
         intent.setData(Uri.parse("tel:"+tel));
         startActivity(intent);
     }
+
+
 }
