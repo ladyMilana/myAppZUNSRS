@@ -26,7 +26,7 @@
         <activity
             android:name=".Pop"
             android:theme="@style/AppTheme.CustomTheme"></activity>
-        <activity android:name=".KontaktiActivity" />
+        <activity android:name=".KontaktiActivity" android:configChanges="orientation|screenSize"/>
         <activity android:name=".SviUdzbActivity" />
         <activity android:name=".DrugiActivity" />
         <activity android:name=".PrviActivity" />

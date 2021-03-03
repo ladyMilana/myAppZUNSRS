@@ -78,7 +78,7 @@ public class Pop extends FragmentActivity implements OnMapReadyCallback {
         LatLng latLng=new LatLng(loc.getLatitude(), loc.getLongitude());
         MarkerOptions markerOptions=new MarkerOptions().position(latLng).title(adr);
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,12));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
         googleMap.addMarker(markerOptions);
     }
 

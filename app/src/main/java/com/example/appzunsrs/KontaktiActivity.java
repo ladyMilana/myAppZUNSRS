@@ -83,45 +83,12 @@ public class KontaktiActivity extends AppCompatActivity {
         loc2=new Location("");
         minDist=0;
 
-        //DOHVATANJE KONTAKATA IZ BAZE ZA PRIKAZ
-        reff = database.getReference("Radnje");
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                listaRadnji.clear();
-
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    Radnje radnja = ds.getValue(Radnje.class);
-                    listaRadnji.add(radnja);
-                }
-
-                ListAdapter adapter = new ListAdapter(KontaktiActivity.this, listaRadnji);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        //proslijedi adresu
-                        Intent intent = new Intent(KontaktiActivity.this, Pop.class);
-                        intent.putExtra("ADR", listaRadnji.get(position).getAdresa().toString());
-                        intent.putExtra("NAZIV", listaRadnji.get(position).getNaziv().toString());
-                        intent.putExtra("TEL", listaRadnji.get(position).getTelefon().toString());
-                        startActivity(intent);
-
-                    }
-                });
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        kreiranjeRadnji();
+        //dohvatanjeRadnjiIzBaze();
 
 
-
-        //MOJA LOKACIJA
+        //MOJA LOKACIJA i kad se promjeni
         locationManager=(LocationManager)getSystemService(LOCATION_SERVICE);
         locationListener=new LocationListener() {
             @Override
@@ -131,6 +98,8 @@ public class KontaktiActivity extends AppCompatActivity {
                 najblizaRadnja=new Radnje();
                 first =true;
 
+                //dohvatanje iz baze
+                /*
                 reff = database.getReference("Radnje");
                 reff.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -163,12 +132,31 @@ public class KontaktiActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });
+                });*/
 
 
+                for (Radnje r : listaRadnji) {
 
+                    loc2=new Location("");
+                    loc2=getLocationFromAddress(r.getAdresa().toString());
+                    distanca=currentLocation.distanceTo(loc2);
 
-            }
+                    if(first){
+                        minDist=distanca;
+                        najblizaRadnja.setAdresa(r.getAdresa().toString());
+                        najblizaRadnja.setNaziv(r.getNaziv().toString());
+                        najblizaRadnja.setTelefon(r.getTelefon().toString());
+                        first=false;
+                    }else{
+                        if(distanca<minDist){
+                            minDist=distanca;
+                            najblizaRadnja.setAdresa(r.getAdresa().toString());
+                            najblizaRadnja.setNaziv(r.getNaziv().toString());
+                            najblizaRadnja.setTelefon(r.getTelefon().toString());
+                        }
+                    }
+                }
+        }
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
             }
@@ -197,11 +185,11 @@ public class KontaktiActivity extends AppCompatActivity {
         }
 
 
-        //NAJBLIZE RADNJE
+        //NAJBLIZE RADNJE na pocetku da izracuna
         najblizaRadnja=new Radnje();
         first =true;
 
-        reff = database.getReference("Radnje");
+       /* reff = database.getReference("Radnje");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -233,7 +221,30 @@ public class KontaktiActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
+
+        for (Radnje r : listaRadnji) {
+
+            loc2=new Location("");
+            loc2=getLocationFromAddress(r.getAdresa().toString());
+            distanca=currentLocation.distanceTo(loc2);
+
+            if(first){
+                minDist=distanca;
+                najblizaRadnja.setAdresa(r.getAdresa().toString());
+                najblizaRadnja.setNaziv(r.getNaziv().toString());
+                najblizaRadnja.setTelefon(r.getTelefon().toString());
+                first=false;
+            }else{
+                if(distanca<minDist){
+                    minDist=distanca;
+                    najblizaRadnja.setAdresa(r.getAdresa().toString());
+                    najblizaRadnja.setNaziv(r.getNaziv().toString());
+                    najblizaRadnja.setTelefon(r.getTelefon().toString());
+                }
+            }
+        }
+
 
     }
 
@@ -287,6 +298,146 @@ public class KontaktiActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void kreiranjeRadnji(){
 
+        listaRadnji.clear();
+
+        Radnje  r=new Radnje("ПЦ Приједор (ВП)",
+                "Свале бб, Приједор", "052231207");
+        listaRadnji.add(r);
+
+        r=new Radnje("Комерцијална служба",
+                "Слободана Кустурића 15, Бања Лука", "051436838");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Бања Лука 1",
+                "Слободана Кустурића 15, Бања Лука", "051212319");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Бања Лука 2",
+                "Краља Петра I Карађорђевића, Бања Лука", "051212478");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Приједор 1",
+                "Милоша Обреновића 1, Приједор", "052213088");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Приједор 2",
+                "Академика Ј. Рашковића 20, Приједор", "052211076");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Нови Град",
+                "Карађорђа Петровића, Нови Град", "052751455");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Бања Лука 3",
+                "Симе Матавуља 2, Бања Лука ", "051213023");
+        listaRadnji.add(r);
+        r=new Radnje("ПЦ Добој (ВП)",
+                "Светог Саве 57ц, Добој", "053222541");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Добој",
+                "Светог Саве 33, Добој", "053221535");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Модрича",
+                "Трг др Милана Јелића 17, Модрича", "052751455");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Котор Варош",
+                "КЦара Душана бб, Котор Варош", "051785325");
+        listaRadnji.add(r);
+        r=new Radnje("ПЦ Требиње (ВП)",
+                "Светосавска 4, Требиње", "059272240");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Требиње",
+                "Светосавска 11,Требиње", "059272241");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Билећа",
+                "Обилићев вијенац 15, Билећа", "059370799");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Гацко",
+                "Солунских добровољаца 12, Гацко", "059473302");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Невесиње",
+                "Немањића бб, Невесиње", "059602676");
+        listaRadnji.add(r);
+        r=new Radnje("ПЦ Бијељина (ВП)",
+                "Сремска бб, Бијељина", "055201506");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Бијељина 1 ",
+                "Гаврила Принципа 14, Бијељина", "055206409");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Бијељина 2 ",
+                "Рачанска 1д, Бијељина", "055202056");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Зворник",
+                "Филипа Кљајића, Зворник", "056211299");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Братунац",
+                "Трг Милоша Обилића бб, Братунац", "056410203");
+        listaRadnji.add(r);
+        r=new Radnje("ПЦ Источно Сарајево (ВП)",
+                "Зорана Цвијетића 58, Источно Сарајево", "057342886");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Источно Сарајево",
+                "Зорана Цвијетића 58, Источно Сарајево", "057340058");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Вишеград",
+                "Андрићград 22, Вишеград", "058620730");
+        listaRadnji.add(r);
+        r=new Radnje("Књижара Фоча",
+                "Шантићева 16, Фоча", "058232458");
+        listaRadnji.add(r);
+
+
+        ListAdapter adapter = new ListAdapter(KontaktiActivity.this, listaRadnji);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //proslijedi adresu
+                Intent intent = new Intent(KontaktiActivity.this, Pop.class);
+                intent.putExtra("ADR", listaRadnji.get(position).getAdresa().toString());
+                intent.putExtra("NAZIV", listaRadnji.get(position).getNaziv().toString());
+                intent.putExtra("TEL", listaRadnji.get(position).getTelefon().toString());
+                startActivity(intent);
+
+            }
+        });
+    }
+
+    public void dohvatanjeRadnjiIzBaze(){
+
+        //DOHVATANJE KONTAKATA IZ BAZE ZA PRIKAZ
+        reff = database.getReference("Radnje");
+        reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                listaRadnji.clear();
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    Radnje radnja = ds.getValue(Radnje.class);
+                    listaRadnji.add(radnja);
+                    loc2=getLocationFromAddress(radnja.getAdresa().toString());
+                }
+
+                ListAdapter adapter = new ListAdapter(KontaktiActivity.this, listaRadnji);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        //proslijedi adresu
+                        Intent intent = new Intent(KontaktiActivity.this, Pop.class);
+                        intent.putExtra("ADR", listaRadnji.get(position).getAdresa().toString());
+                        intent.putExtra("NAZIV", listaRadnji.get(position).getNaziv().toString());
+                        intent.putExtra("TEL", listaRadnji.get(position).getTelefon().toString());
+                        startActivity(intent);
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 }
