@@ -223,7 +223,7 @@ public class KontaktiActivity extends AppCompatActivity {
             }
         });*/
 
-        for (Radnje r : listaRadnji) {
+       for (Radnje r : listaRadnji) {
 
             loc2=new Location("");
             loc2=getLocationFromAddress(r.getAdresa().toString());
